@@ -1,0 +1,82 @@
+appId: com.liveassistant.app
+productName: Tala Live Assistant
+directories:
+  output: dist/${arch}
+
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!dist/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+asar: true
+
+# 不压缩以下文件
+asarUnpack:
+  - resources/**
+
+# =============================  mac  ===================================
+mac:
+  icon: 'build/icon.icns'
+  hardenedRuntime: false # 关闭签名校验
+  entitlementsInherit: 'build/entitlements.mac.plist'
+  entitlements: 'build/entitlements.mac.plist'
+  identity: null
+  gatekeeperAssess: false
+  target:
+    - pkg
+  extendInfo:
+    NSCameraUsageDescription: "Application requests access to the device's camera."
+    NSMicrophoneUsageDescription: "Application requests access to the device's microphone."
+    NSDocumentsFolderUsageDescription: "Application requests access to the user's Documents folder."
+    NSDownloadsFolderUsageDescription: "Application requests access to the user's Downloads folder."
+  notarize: false # 不进行苹果官方签名
+
+dmg:
+  artifactName: '${name}-${version}-${arch}.${ext}'
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: 'link'
+      path: '/Applications'
+pkg:
+  welcome: 'build/welcome.txt'
+
+# =============================  win  ===================================
+win:
+  executableName: liveassistant
+
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
+  createStartMenuShortcut: true # 创建开始菜单快捷方式
+  oneClick: true # 允许用户选择安装目录
+  perMachine: true # 安装为所有用户
+  allowElevation: true # 允许提升权限（管理员权限）
+  allowToChangeInstallationDirectory: true # 允许用户选择安装路径
+  installerIcon: build/icon.ico # 安装程序图标
+  uninstallerIcon: build/icon.ico # 卸载程序图标
+
+# =============================  自动发布  ===================================
+
+publish:
+  provider: generic
+  url: https://example.com/auto-updates
+electronDownload:
+  mirror: https://npmmirror.com/mirrors/electron/
+# linux:
+#   target:
+#     - AppImage
+#     - snap
+#     - deb
+#   maintainer: electronjs.org
+#   category: Utility
+# appImage:
+#   artifactName: ${name}-${version}.${ext}
+# npmRebuild: false
