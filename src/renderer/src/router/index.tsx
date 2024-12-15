@@ -4,7 +4,7 @@ import Loading from '@renderer/components/basic/loading'
 import PageError from '@renderer/views/404'
 import Nav from '@renderer/components/basic/nav'
 
-const Home = lazy(() => import('@renderer/views/home'))
+const Login = lazy(() => import('@renderer/views/login'))
 
 const lazyLoad = (Component: React.ComponentType) => (
   <Suspense fallback={<Loading />}>
@@ -16,7 +16,7 @@ const lazyLoad = (Component: React.ComponentType) => (
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: lazyLoad(Home)
+    element: lazyLoad(Login)
   },
   {
     path: '*',

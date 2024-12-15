@@ -31,6 +31,10 @@ app.whenReady().then(() => {
   })
 })
 
+app.on('before-quit', () => {
+  ;(app as any).isQuiting = true
+})
+
 // 所有窗口关闭时退出应用（在 Mac 上除外）
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

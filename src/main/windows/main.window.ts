@@ -23,6 +23,7 @@ const createMainWindow = () => {
     height: 710,
     minWidth: 1100,
     minHeight: 710,
+    backgroundColor: '#161616',
     x,
     y,
     show: true, // 主窗口在加载完内容之前不显示
