@@ -1,12 +1,17 @@
 import styles from './index.module.scss'
 import logo from '../../assets/logo.png'
-
 import { Input, Button } from 'antd'
+import { useNavigate } from 'react-router'
+
 const Login = () => {
+  const navigate = useNavigate()
+  const skipHome = () => {
+    navigate('/layout/home')
+  }
   return (
     <div className={styles['login']}>
       <div className={styles['login__display']}>
-        <div>芋圆记账 © 2024</div>
+        <div>© 2024 芋圆记账. All Rights Reserved</div>
         <div>在做预算时追踪你的情绪</div>
         <div>发现适合每种感受的完美费用追踪器！</div>
         <img src={logo} alt="" />
@@ -18,7 +23,7 @@ const Login = () => {
         <Input placeholder="请输入您的名称" className={styles['ipt']} size="large" />
         <Input placeholder="请输入您的账号" className={styles['ipt']} size="large" />
         <Input placeholder="请输入您的密码" className={styles['ipt']} size="large" />
-        <Button type="primary" className={styles['btn']} size="large">
+        <Button type="primary" className={styles['btn']} size="large" onClick={skipHome}>
           登录
         </Button>
       </div>

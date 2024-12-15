@@ -1,0 +1,45 @@
+.layout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  padding: 15px;
+  box-sizing: border-box;
+
+  &__sider {
+    background-color: #2e2e2e;
+    width: 200px;
+    border-radius: 15px;
+    margin-right: 10px;
+    padding: 30px 15px;
+    box-sizing: border-box;
+    .menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      .top {
+        &__title {
+          font-size: 16px;
+          margin-bottom: 30px;
+
+          font-weight: 500;
+        }
+        &__item {
+          margin-top: 15px;
+        }
+      }
+      .btn {
+        justify-content: flex-start;
+        font-size: 14px;
+        &:hover {
+          color: #f78725;
+        }
+      }
+    }
+  }
+  &__main {
+    flex-grow: 1;
+    border-radius: 15px;
+    // border: 1px solid #eee;
+  }
+}

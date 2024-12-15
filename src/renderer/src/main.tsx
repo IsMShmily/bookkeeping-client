@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       theme={{
         algorithm: theme.darkAlgorithm,
         token: {
-          colorPrimary: '#ef8a34',
+          colorPrimary: '#f78725',
           borderRadius: 500
         },
         components: {

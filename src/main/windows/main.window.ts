@@ -32,8 +32,8 @@ const createMainWindow = () => {
       preload: preloadPath,
       sandbox: false, // 根据需求启用或禁用沙盒
       nodeIntegration: true,
-      contextIsolation: false, // 关闭上下文隔离
-      devTools: false
+      contextIsolation: false // 关闭上下文隔离
+      // devTools: false
     }
   })
 

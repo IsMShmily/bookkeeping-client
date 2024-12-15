@@ -6,6 +6,9 @@ import Nav from '@renderer/components/basic/nav'
 
 const Login = lazy(() => import('@renderer/views/login'))
 
+import LayoutMain from '@renderer/layout/index'
+import Home from '@renderer/views/home'
+
 const lazyLoad = (Component: React.ComponentType) => (
   <Suspense fallback={<Loading />}>
     <Nav />
@@ -17,6 +20,16 @@ const routes: RouteObject[] = [
   {
     path: '/',
     element: lazyLoad(Login)
+  },
+  {
+    path: '/layout',
+    element: <LayoutMain />,
+    children: [
+      {
+        path: 'home',
+        element: lazyLoad(Home)
+      }
+    ]
   },
   {
     path: '*',
